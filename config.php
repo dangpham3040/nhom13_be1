@@ -12,3 +12,4 @@ define( 'PORT', 3306);
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
 //add cmt
+//update lần 2
