@@ -1,5 +1,5 @@
 <?php
-class Product extends Db
+class Products extends Db
 {
     public function getAllProducts()
     {
@@ -9,7 +9,7 @@ class Product extends Db
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
-    public function getProductById($id)
+    public function getProductsById($id)
     {
         $sql = self::$connection->prepare("SELECT * FROM products WHERE id = ?");
         $sql->bind_param("i",$id);
