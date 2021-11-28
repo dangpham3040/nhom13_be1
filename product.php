@@ -237,11 +237,23 @@
 						<!-- store products -->
 						<div class="row">
 							<?php 
-							if(isset($_GET['keyword'])):
-								$keyword=$_GET['keyword'];
-								$search = $produsts->search($keyword);
-								//var_dump($search);
-								foreach($search as $value):
+							if(isset($_GET['manu_id'])):
+								$manu_id=$_GET['manu_id'];
+								$getProductByManuId = $products->getProductByManuId($manu_id);
+								// hiển thị 3 sản phẩm trên 1 trang
+								$perPage = 3; 				
+								// Lấy số trang trên thanh địa chỉ
+								if(isset($_GET['page'])) {
+									$page = $_GET['page']; 	
+								} else	{
+									$page = 1;
+								}
+								// Tính tổng số dòng, ví dụ kết quả là 18
+								$total = count($getProductByManuId); 					
+								// lấy đường dẫn đến file hiện hành
+								$url = $_SERVER['PHP_SELF']."?manu_id=".$manu_id;
+								$get3ProductByManuId = $products->get3ProductByManuId($manu_id, $page, $perPage);
+								foreach($get3ProductByManuId as $value):
 							?>
 							<!-- product -->
 							<div class="col-md-4 col-xs-6">
@@ -274,7 +286,7 @@
 							<!-- /product -->
 							<?php 
 								endforeach;
-							endif; ?>
+							?>
 						</div>
 						<!-- /store products -->
 
@@ -282,14 +294,11 @@
 						<div class="store-filter clearfix">
 							<span class="store-qty">Showing 20-100 products</span>
 							<ul class="store-pagination">
-								<li class="active">1</li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+								<?php echo $products->paginate($url, $total, $perPage) ?>
 							</ul>
 						</div>
 						<!-- /store bottom filter -->
+						<?php endif; ?>
 					</div>
 					<!-- /STORE -->
 				</div>
@@ -298,4 +307,4 @@
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
-<?php include "footer.html"; ?>
+<?php include "footer.html" ?>

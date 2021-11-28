@@ -1,11 +1,5 @@
-<?php
-require "config.php";
-require "models/db.php";
-require "models/products.php";
-$products = new Products;
-$getAllProducts = $products->getAllProducts();
-//var_dump($getAllProducts); 
-include "header.php" 
+<?php 
+include "header.php";
 ?>
 		<!-- SECTION -->
 		<div class="section">
@@ -656,4 +650,4 @@ include "header.php"
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
-		<?php include "footer.html" ?>
+<?php include "footer.html" ?>
