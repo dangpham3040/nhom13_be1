@@ -1,7 +1,7 @@
 <?php 
 require "config.php";
 require "models/db.php";
-require "models/products.php";
+require "models/product.php";
 require "models/manufacture.php";
 $products = new Products;
 $manu = new Manufacture;
@@ -46,6 +46,7 @@ $getAllManu = $manu->getAllManu();
 		<![endif]-->
 
     </head>
+	<body>
 		<!-- HEADER -->
 		<header>
 			<!-- TOP HEADER -->
@@ -183,7 +184,8 @@ $getAllManu = $manu->getAllManu();
 						<?php 
 						foreach($getAllManu as $value):
 						?>
-						<li><a href="product.php?manu_id=<?php echo $value['manu_id'] ?>"><?php echo $value['manu_name'] ?></a></li>
+						<li><a href="product.php?manu_id=<?php echo $value['manu_id'] ?>">
+						<?php echo $value['manu_name'] ?></a></li>
 						<?php 
 						endforeach;
 						?>
