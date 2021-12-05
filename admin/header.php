@@ -2,14 +2,18 @@
 require "config.php";
 require "models/db.php";
 require "models/product.php";
+require "models/manufacture.php";
+require "models/protype.php";
 $product = new Product;
+$manu = new Manufacture;
+$type = new Protype;
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Admin | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -238,13 +242,7 @@ $product = new Product;
             <li class="nav-item">
                 <a href="addProduct.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Project Add</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="editProducts.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Edit</p>
+                  <p>Add Product</p>
                 </a>
             </li>
         </ul>

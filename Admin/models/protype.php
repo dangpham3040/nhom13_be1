@@ -1,8 +1,8 @@
 <?php
-class Manufacture extends Db{
-    public function getAllManus()
+class Protype extends Db{
+    public function getAllProtypes()
     {
-        $sql = self::$connection->prepare("SELECT * FROM `manufactures`");                      
+        $sql = self::$connection->prepare("SELECT * FROM `protypes`");                      
         $sql->execute(); //return an object
         $items = array();
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);

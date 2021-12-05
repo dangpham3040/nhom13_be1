@@ -3,7 +3,7 @@ require "config.php";
 require "models/db.php";
 require "models/product.php";
 require "models/manufacture.php";
-$products = new Products;
+$products = new Product;
 $manu = new Manufacture;
 $getAllProducts = $products->getAllProducts();
 $getAllManu = $manu->getAllManu();

@@ -48,6 +48,28 @@ class Product extends Db
             }
             return $link;
     }
+    public function filterBarand($keyword,$manu_id)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM products
+        WHERE `name` LIKE ? AND manu_id IN (?)");
+        $keyword = "%$keyword%";
+        $sql->bind_param("ss", $keyword,$manu_id);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    public function filterPrice($keyword,$min,$max)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `products`
+        WHERE `name` LIKE ? AND `price` BETWEEN ? AND ?");
+        $keyword = "%$keyword%";
+        $sql->bind_param("sii", $keyword,$min,$max);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
     public function search($keyword)
     {
         $sql = self::$connection->prepare("SELECT * FROM products 
